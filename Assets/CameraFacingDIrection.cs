@@ -6,7 +6,8 @@ public class CameraFacingDIrection : MonoBehaviour
 {
     public Transform lookAtTarget;
     public Transform followTarget;
-    public Vector3 offset; 
+    public Vector3 posOffset; 
+    // public Vector3 rotationOffset; 
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +17,9 @@ public class CameraFacingDIrection : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        Vector3 playerOffset = followTarget.forward * offset.x + followTarget.up * offset.y;
+        Vector3 playerposOffset = followTarget.forward * posOffset.x + followTarget.up * posOffset.y;
         Vector3 diff = followTarget.position - lookAtTarget.position;
-        transform.position = followTarget.position + diff * offset.z + playerOffset;
+        transform.position = followTarget.position + diff * posOffset.z + playerposOffset;
+        // transform.Rotate(rotationOffset);
     }
 }
