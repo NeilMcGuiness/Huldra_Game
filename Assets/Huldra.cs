@@ -12,10 +12,11 @@ public class Huldra : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        // Run the GenerateRandomAnimState every 10 seconds
         InvokeRepeating("GenerateRandomAnimState", 1.0f, 10.0f);
 
     }
-
+    // Function to trigger a random blend state - function can be run every 'X' seconds.
     void GenerateRandomAnimState () 
     {
          float random = Random.Range(0f, 1f);
@@ -36,6 +37,7 @@ public class Huldra : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Gradually blends the animator tree to the new target state with delta time.
         anim.SetFloat("Blend", blendState, 1.0f, Time.deltaTime);
 
         // // 
@@ -61,7 +63,7 @@ public class Huldra : MonoBehaviour
         //     anim.SetFloat("Blend", 1f, 0, Time.deltaTime);
         // }
         
-        // // float blendAmount = anim.GetFloat("Blend");
+        // float blendAmount = anim.GetFloat("Blend");
         // Debug.Log("ANIM Blend Amount - " + anim.GetFloat("Blend"));
     }
 }
